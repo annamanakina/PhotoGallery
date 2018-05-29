@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_16dp"
+    tools:context="manakina.com.photogallery.FetchActivity">
+
+    <TextView
+        android:id="@+id/search_term_textview"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_56dp"
+        android:text="@string/search_query_text"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_8dp"
+        android:paddingRight="@dimen/margin_8dp"
+        app:layout_constraintHorizontal_weight="1"
+
+        app:layout_constraintBottom_toTopOf="@+id/columns_text_textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/search_input"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"/>
+
+
+    <!-- android:hint="@string/hint_text" -->
+    <EditText
+        android:id="@+id/search_input"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_56dp"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintHorizontal_weight="2"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/columns_text_textView"
+        app:layout_constraintLeft_toRightOf="@+id/search_term_textview"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/columns_text_textView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/size_56dp"
+        android:text="@string/columns_text"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/margin_8dp"
+        android:paddingRight="@dimen/margin_8dp"
+        app:layout_constraintHorizontal_weight="1"
+
+        app:layout_constraintBottom_toTopOf="@+id/search_textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/columns_option_seekbar"
+        app:layout_constraintTop_toBottomOf="@+id/search_term_textview"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <SeekBar
+        android:id="@+id/columns_option_seekbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="2"
+        android:max="5"
+        android:progress="1"
+        app:layout_constraintBottom_toTopOf="@+id/search_textView"
+        app:layout_constraintLeft_toRightOf="@+id/columns_text_textView"
+        app:layout_constraintRight_toLeftOf="@+id/columns_amount_textView"
+        app:layout_constraintTop_toBottomOf="@+id/search_term_textview"
+        app:layout_constraintVertical_bias="0.5"/>
+
+    <TextView
+        android:id="@+id/columns_amount_textView"
+        android:layout_width="@dimen/size_24dp"
+        android:layout_height="@dimen/size_56dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/search_textView"
+        app:layout_constraintLeft_toRightOf="@+id/columns_option_seekbar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_term_textview"/>
+
+    <TextView
+        android:id="@+id/search_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_56dp"
+        android:text="@string/search_text"
+        android:textSize="22sp"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin_8dp"
+        android:paddingRight="@dimen/margin_8dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/columns_amount_textView"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+</android.support.constraint.ConstraintLayout>

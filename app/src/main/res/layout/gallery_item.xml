@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridview_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop">
+    </ImageView>
+
+    <ProgressBar
+        style="@android:style/Widget.ProgressBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:indeterminate="false"
+        android:visibility="visible"
+        />
+
+</LinearLayout> -->
+
+    <manakina.com.photogallery.control.ImageLoaderView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background = "@android:color/holo_green_light"
+        >
+
+    </manakina.com.photogallery.control.ImageLoaderView>
+
+    <!-- <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop">
+    </ImageView>
+    -->

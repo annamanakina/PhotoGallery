@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">PhotoGallery</string>
+
+    <!-- FetchActivity-->
+    <string name="search_query_text">Search Term</string>
+    <string name="columns_text">Columns</string>
+    <string name="columns_amount_text">0</string>
+    <string name="search_text">Search</string>
+    <string name="hint_text">Search... </string>
+    <string name="nothing_found_text">Nothing found! Your search returned no results. </string>
+
+    <!-- DisplayImagesActivity-->
+
+
+
+</resources>

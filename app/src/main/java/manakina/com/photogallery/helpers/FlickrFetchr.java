@@ -26,7 +26,6 @@ public class FlickrFetchr {
     private static final String METHOD_GET_RECENT = "flickr.photos.getRecent";
 
     //public static final String PREF_SEARCH_QUERY = "searchQuery";
-    //public static final String PREF_LAST_RESULT_ID = "lastResultId";
 
     //additional parameter
     private static final String PARAM_EXTRAS = "extras";
@@ -124,13 +123,11 @@ public class FlickrFetchr {
                 String id = parser.getAttributeValue(null, "id");
                 String caption = parser.getAttributeValue(null, "title");
                 String smallUrl = parser.getAttributeValue(null, EXTRA_SMALL_URL);
-                //String owner = parser.getAttributeValue(null, "owner");
 
                 GalleryItem item = new GalleryItem();
                 item.setId(id);
                 item.setCaption(caption);
                 item.setUrl(smallUrl);
-                //item.setOwner(owner);
                 items.add(item);
             }
 
@@ -138,24 +135,4 @@ public class FlickrFetchr {
         }
     }
 
-
-    /*void parseItems (ArrayList<GalleryItem> items, XmlPullParser parser)
-           throws XmlPullParserException, IOException {
-        int eventType = parser.next();
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                    if (eventType == XmlPullParser.START_TAG && XML_PHOTO.equals(parser.getName())) {
-                        String id = parser.getAttributeValue(null, "id");
-                        String caption = parser.getAttributeValue(null, "title");
-                        String smallUrl = parser.getAttributeValue(null, EXTRA_SMALL_URL);
-
-                        GalleryItem item = new GalleryItem();
-                        item.setId(id);
-                        item.setCaption(caption);
-                        item.setUrl(smallUrl);
-                        items.add(item);
-                    }
-                    eventType = parser.next();
-                   // Log.i(TAG, "eventType XML_PHOTO " + String.valueOf(eventType));
-        }
-    }*/
 }

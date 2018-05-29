@@ -3,7 +3,7 @@ package manakina.com.photogallery;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import manakina.com.photogallery.adapters.GalleryItemAdapter;
 import manakina.com.photogallery.helpers.FlickrFetchr;
 import manakina.com.photogallery.model.GalleryItem;
-import manakina.com.photogallery.helpers.ThumbnailDownloader;
 import manakina.com.photogallery.helpers.Utils;
 
 public class DisplayImagesActivity extends AppCompatActivity {
@@ -24,7 +23,6 @@ public class DisplayImagesActivity extends AppCompatActivity {
 
     private GridView mGridView;
     private ArrayList<GalleryItem> mItems;
-    private ThumbnailDownloader mThumbnailThread;
     private String mQuery;
     private int columnAmount;
     private ProgressBar mProgressBar;
@@ -39,11 +37,6 @@ public class DisplayImagesActivity extends AppCompatActivity {
         columnAmount = getIntent().getIntExtra(FetchActivity.EXTRA_COLUMN_AMOUNT, -1);
 
         updateItems();
-
-        //это убрать
-        mThumbnailThread = new ThumbnailDownloader(new Handler());
-        mThumbnailThread.start();
-       // Log.i("TAG", "DisplayImagesActivity onCreate  ");
     }
 
     public void updateItems() {
@@ -57,13 +50,12 @@ public class DisplayImagesActivity extends AppCompatActivity {
             mGridView.setNumColumns(columnAmount);
             int imageWidth = Utils.getWindowWidth(this);
             mGridView.setColumnWidth(((int) (imageWidth*0.8))/columnAmount);
-            mGridView.setAdapter(new GalleryItemAdapter(this, mThumbnailThread, mItems, imageWidth/columnAmount));
+            mGridView.setAdapter(new GalleryItemAdapter(this, mItems, imageWidth/columnAmount));
         } else {
             TextView textViewError = (TextView) findViewById(R.id.textViewError);
             textViewError.setVisibility(View.VISIBLE);
             mGridView.setAdapter(null);
             mGridView.setVisibility(View.GONE);
-            //Log.i("TAG", "else");
         }
     }
 
@@ -88,53 +80,15 @@ public class DisplayImagesActivity extends AppCompatActivity {
             } else {
                 Log.i("TAG", "mQuery == null");
                 return null;
-                        //new FlickrFetchr().fetchItems();
             }
         }
 
         @Override
         protected void onPostExecute(ArrayList<GalleryItem> items) {
             mItems = items;
-            /*if (items.size() > 0) {
-                String resultId = items.get(0).getId();
-                PreferenceManager.getDefaultSharedPreferences(getActivity())
-                        .edit()
-                        .putString(FlickrFetchr.PREF_LAST_RESULT_ID, resultId)
-                        .commit();
-            }*/
-
             setupAdapter();
             mProgressBar.setVisibility(View.GONE);
         }
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mThumbnailThread.clearQueue();
-        //Log.i("TAG", "DisplayImagesActivity onStop  ");
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mThumbnailThread.quit();
-       // Log.i("TAG", "DisplayImagesActivity onDestroy  ");
-    }
-
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-      //  Log.i("TAG", "DisplayImagesActivity onStart  ");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-       // Log.i("TAG", "DisplayImagesActivity onResume  ");
     }
 
     @Override
@@ -147,7 +101,6 @@ public class DisplayImagesActivity extends AppCompatActivity {
                 .putInt(DisplayImagesActivity.PREF_COLUMN_AMOUNT, mColumnAmount)
                 .commit();*/
     }
-
 
 
 }

@@ -46,30 +46,11 @@ public class FetchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fetch);
 
-        //получить из сохранения
         /*String query = PreferenceManager.getDefaultSharedPreferences(this)
                 .getString(FlickrFetchr.PREF_SEARCH_QUERY, null);*/
 
-
-        //условие если картинок нет вообще, то отобразить какой-то текст или тоаст
         mSearchInput = (EditText) findViewById(R.id.search_input);
         mSearchInput.setOnEditorActionListener(new DoneOnEditorActionListener());
-        mSearchInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-               // mQuery = mSearchInput.getText().toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
 
         mSeekBar = (SeekBar) findViewById(R.id.columns_option_seekbar);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -89,12 +70,12 @@ public class FetchActivity extends AppCompatActivity {
 
         mColumnAmountView = (TextView) findViewById(R.id.columns_amount_textView);
         mColumnAmountView.setText(String.valueOf(mSeekBar.getProgress()));
-        //mColumnAmount = mSeekBar.getProgress();
+
         mStartSearchView = (TextView) findViewById(R.id.search_textView);
         mStartSearchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //mSearchInput.setText("leaf");
+
                 if(!mSearchInput.getText().toString().equals("") && mSeekBar.getProgress() != 0) {
                     //Toast.makeText(FetchActivity.this, "go search", Toast.LENGTH_LONG).show();
 
@@ -106,7 +87,7 @@ public class FetchActivity extends AppCompatActivity {
 
             }
         });
-        //Log.i("TAG", "onCreate  " + query);
+
     }
 
    /* @Override
@@ -114,15 +95,10 @@ public class FetchActivity extends AppCompatActivity {
         super.onStart();
         Log.i("TAG", "onStart  ");
         //тут восстанавливать из PreferenceManager
-    }
+    }*/
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.i("TAG", "onResume  ");
-    }
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
         Log.i("TAG", "onPause  ");
@@ -134,16 +110,4 @@ public class FetchActivity extends AppCompatActivity {
                 .commit();
     }*/
 
-
-   /* @Override
-    protected void onStop() {
-        super.onStop();
-        Log.i("TAG", "onStop  ");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.i("TAG", "onDestroy  ");
-    }*/
 }
